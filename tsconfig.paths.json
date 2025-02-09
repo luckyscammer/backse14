@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@config": ["config/index"],
+      "@router/*": ["router/*"],
+      "@router": ["router/index"],
+      "@controllers/*": ["controllers/*"],
+      "@controllers": ["controllers/index"],
+      "@models/*": ["models/*"],
+      "@models": ["models/index"],
+      "@middlewares/*": ["middlewares/*"],
+      "@middlewares": ["middlewares/index"],
+      "@utils/*": ["utils/*"],
+      "@utils": ["utils/index"]
+    }
+  }
+}
