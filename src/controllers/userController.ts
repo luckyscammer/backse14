@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {createUser, deleteUserById, getUsers, getUserById, User} from "@models";
+import {createUser, deleteUserById, getUsers, getUserById, User, updateUserById} from "@models";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   const users: User[] = await getUsers();
@@ -47,4 +47,30 @@ export const deleteUser = async (req: Request, res: Response) => {
   }
 
   res.json({ message: "User deleted successfully", user: deletedUser });
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { name, email, password } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "User ID is required" });
+  }
+
+  const existingUser = await getUserById(Number(id));
+  if (!existingUser) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  const updatedData: Partial<User> = {};
+  if (name) updatedData.name = name;
+  if (email) updatedData.email = email;
+  if (password) updatedData.password = password;
+
+  if (Object.keys(updatedData).length === 0) {
+    return res.status(400).json({ message: "No fields to update" });
+  }
+
+  const updatedUser = await updateUserById(Number(id), updatedData);
+  res.json({ message: "User updated successfully", user: updatedUser });
 };

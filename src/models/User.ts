@@ -38,7 +38,7 @@ export const deleteUserById = async (id: number): Promise<User | null> => {
   return result.rows[0] as User | null;
 };
 
-export const updateUserById = async (id: number, values: Partial<User>) => {
+export const updateUserById = async (id: number, values: Partial<User>): Promise<User | null> => {
   const keys = Object.keys(values);
   const valuesArray = Object.values(values);
 
@@ -51,5 +51,5 @@ export const updateUserById = async (id: number, values: Partial<User>) => {
     [id, ...valuesArray]
   );
 
-  return result.rows[0];
+  return result.rows[0] as User | null;
 };
