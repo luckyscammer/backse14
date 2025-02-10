@@ -2,9 +2,25 @@ import { Request, Response } from "express";
 import {createUser, deleteUserById, getUsers, getUserById, User, updateUserById, getUserByEmail as getUserByEmailFunc} from "@models";
 
 export const getAllUsers = async (req: Request, res: Response) => {
-  const users: User[] = await getUsers();
+  const { email } = req.query;
+
+  if (email) {
+    if (typeof email !== "string") {
+      return res.status(400).json({ message: "Email must be a string" });
+    }
+
+    const user = await getUserByEmailFunc(email);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.json(user);
+  }
+
+  const users = await getUsers();
   res.json(users);
 };
+
 
 export const getUser = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -19,20 +35,6 @@ export const getUser = async (req: Request, res: Response) => {
     return res.status(404).json({ message: "User not found" });
   }
 
-  res.json(user);
-};
-
-export const getUserByEmail = async (req: Request, res: Response) => {
-  const { email } = req.query;
-  if (!email || typeof email !== "string") {
-    return res.status(400).json({ message: "Email is required and must be a string" });
-  }
-
-  const user = await getUserByEmailFunc(email);
-
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
-  }
   res.json(user);
 };
 
