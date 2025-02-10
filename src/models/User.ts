@@ -19,9 +19,9 @@ export const getUserByEmail = async (email: string): Promise<User> => {
   return result.rows[0] as User;
 };
 
-export const getUserById = async (id: number) => {
+export const getUserById = async (id: number): Promise<User> => {
   const result = await db.query("SELECT * FROM users WHERE id = $1", [id]);
-  return result.rows[0];
+  return result.rows[0] as User;
 };
 
 export const createUser = async (values: { name: string; email: string; password: string }) => {
