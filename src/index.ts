@@ -4,7 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import { configDotenv } from 'dotenv';
-import db, { createUsersTable } from "@config";
+import db, { createProjectMembersTable, createProjectsTable, createTasksTable, createUsersTable } from "@config";
 import router from '@router'
 
 configDotenv()
@@ -20,9 +20,26 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const migrations = [
+  createUsersTable,
+  createProjectsTable,
+  createProjectMembersTable,
+  createTasksTable
+];
+
 (async () => {
-  await createUsersTable();
+  try {
+    for (const migrate of migrations) {
+      await migrate();
+      console.log(`Migration ${migrate.name} completed`);
+    }
+    console.log("✅ All migrations completed successfully!");
+  } catch (error) {
+    console.error("❌ Migration failed:", error);
+    process.exit(1);
+  }
 })();
+
 
 app.use('/', router)
 app.use(errorHandler)

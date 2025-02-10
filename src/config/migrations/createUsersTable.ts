@@ -13,7 +13,6 @@ const createUsersTable = async () => {
 
   try {
     await db.query(query);
-    console.log("✅ Table 'users' created successfully.");
   } catch (error) {
     console.error("❌ Error creating 'users' table:", error);
   }

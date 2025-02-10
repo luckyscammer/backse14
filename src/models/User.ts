@@ -13,7 +13,6 @@ export const getUsers = async (): Promise<User[]> => {
   return result.rows as User[];
 };
 
-
 export const getUserByEmail = async (email: string): Promise<User> => {
   const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
   return result.rows[0] as User;

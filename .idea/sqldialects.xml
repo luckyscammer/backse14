@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/config/migrations/createProjectMembersTable.ts" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/config/migrations/createProjectsTable.ts" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/config/migrations/createTasksTable.ts" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/config/migrations/createUsersTable.ts" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/models/User.ts" dialect="GenericSQL" />
   </component>
