@@ -1,6 +1,6 @@
 import { ProjectController } from "@controllers";
 import { asyncHandler } from "@middlewares";
-import { Router  } from "express";
+import { Router } from "express";
 
 const router = Router();
 

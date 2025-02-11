@@ -1,6 +1,6 @@
 import { handleError } from "@middlewares";
 import { Request, Response } from "express";
-import {ProjectModel, User, UserModel} from "@models";
+import { ProjectModel, User, UserModel } from "@models";
 
 export class UserController {
   static async getAllUsers(req: Request, res: Response) {
