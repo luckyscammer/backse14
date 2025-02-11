@@ -6,8 +6,8 @@
     "paths": {
       "@config/*": ["config/*"],
       "@config": ["config/index"],
-      "@router/*": ["router/*"],
-      "@router": ["router/index"],
+      "@routes/*": ["routes/*"],
+      "@routes": ["routes/index"],
       "@controllers/*": ["controllers/*"],
       "@controllers": ["controllers/index"],
       "@models/*": ["models/*"],

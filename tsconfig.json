@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2022",
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./dist",
@@ -15,8 +15,8 @@
     "paths": {
       "@config/*": ["config/*"],
       "@config": ["config/index"],
-      "@router/*": ["router/*"],
-      "@router": ["router/index"],
+      "@routes/*": ["routes/*"],
+      "@routes": ["routes/index"],
       "@controllers/*": ["controllers/*"],
       "@controllers": ["controllers/index"],
       "@models/*": ["models/*"],

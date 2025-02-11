@@ -1,6 +1,6 @@
 import db from "@config";
 
-const createProjectsTable = async () => {
+export const createProjectsTable = async () => {
   const query = `
     CREATE TABLE IF NOT EXISTS projects (
       id SERIAL PRIMARY KEY,
@@ -16,5 +16,3 @@ const createProjectsTable = async () => {
     console.error("❌ Error creating 'projects' table:", error);
   }
 };
-
-export default createProjectsTable;

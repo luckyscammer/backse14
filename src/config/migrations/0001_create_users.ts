@@ -1,6 +1,6 @@
 import db from "@config";
 
-const createUsersTable = async () => {
+export const createUsersTable = async () => {
   const query = `
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
@@ -17,5 +17,3 @@ const createUsersTable = async () => {
     console.error("❌ Error creating 'users' table:", error);
   }
 };
-
-export default createUsersTable;

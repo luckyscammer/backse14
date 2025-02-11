@@ -1,6 +1,6 @@
 import db from "@config";
 
-const createTasksTable = async () => {
+export const createTasksTable = async () => {
   const query = `
     CREATE TABLE IF NOT EXISTS tasks (
       id SERIAL PRIMARY KEY,
@@ -21,4 +21,3 @@ const createTasksTable = async () => {
   }
 };
 
-export default createTasksTable;

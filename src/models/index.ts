@@ -1,1 +1,1 @@
-export * from './User'
+export * from 'models/user.model'
