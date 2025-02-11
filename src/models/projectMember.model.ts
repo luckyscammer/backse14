@@ -41,4 +41,13 @@ export class ProjectMemberModel {
     );
     return result.rows.length > 0;
   }
+
+  static async getUserRole(project_id: number, user_id: number): Promise<ProjectMemberRole | null> {
+    const result = await db.query(
+      "SELECT role FROM project_members WHERE project_id = $1 AND user_id = $2",
+      [project_id, user_id]
+    );
+    return result.rows[0]?.role || null;
+  }
+
 }

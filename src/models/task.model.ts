@@ -36,6 +36,12 @@ export class TaskModel {
     return result.rows[0] as Task;
   }
 
+  static async getById(id: number): Promise<Task | null> {
+    const result = await db.query("SELECT * FROM tasks WHERE id = $1", [id]);
+    return result.rows[0] as Task || null;
+  }
+
+
   static async getAllByProject(project_id: number): Promise<Task[]> {
     const result = await db.query("SELECT * FROM tasks WHERE project_id = $1", [project_id]);
     return result.rows as Task[];
